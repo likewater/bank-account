@@ -5,17 +5,18 @@ $(document).ready(function() {
     var name = $("input#name").val();
     var deposit = $("input#initialDeposit").val();
     var newAccount = new accountSetup(name, deposit);
-    console.log(deposit);
+
     $(".output").text(deposit);
 
   $("#accountForm").click(function(){
       var newDeposit = $("input#deposit").val();
       var withdrawal = $("input#withdrawal").val();
       var changeBalance = new balanceChange(newDeposit, withdrawal);
-      console.log(changeBalance);
+
       newAccount.money.push(changeBalance);
-      console.log(newAccount);
+
       var newTotal = newAccount.newTotal();
+      console.log(newAccount);
       console.log(newTotal);
       $(".output").text(newTotal);
     });
@@ -35,5 +36,5 @@ function balanceChange(newDeposit, withdrawal) {
 }
 
 accountSetup.prototype.newTotal = function () {
-  return this.name + this.money
+  return this.deposit + this.money[0].newDeposit
 }
